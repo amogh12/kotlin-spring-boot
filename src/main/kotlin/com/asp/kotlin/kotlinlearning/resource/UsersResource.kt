@@ -12,11 +12,7 @@ class UsersResource(val usersRepository: UsersRepository) {
     fun getUsers() = usersRepository.findAll()
 
     @PostMapping(value = "/insert")
-    fun insertUsers(@RequestBody user: Users): List<Users> {
-//        val users = Users(name)
-        usersRepository.save(user)
-        return usersRepository.findAll()
-    }
+    fun insertUsers(@RequestBody user: Users) = usersRepository.save(user)
 
     @GetMapping(value ="find/{name}")
     fun findUser(@PathVariable name: String): Users {
